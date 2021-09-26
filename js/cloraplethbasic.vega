@@ -1,0 +1,42 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "Covid Cases by US County over Time",
+    "width": 850,
+    "height": 600,
+    "data": {
+        "url": "https://raw.githubusercontent.com/SamuelGE0006/FIT3179W9Homework/main/UScountiestopo.topojson",
+        "format": {
+            "type": "topojson",
+            "feature": "counties"
+        }
+    },
+    "transform": [{
+        "lookup": "properties.name",
+        "from": {
+            "data": {
+                "url": "https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-counties.csv"
+            },
+            "key": "county",
+            "fields": ["cases"]
+        }},
+        {"calculate": "datum.cases + 0.1", "as": "truecases"}
+],
+        "projection": {
+            "type": "albersUsa",
+            "center": [-120,50],
+             "scale": 1100},
+        "mark": {
+            "type": "geoshape", "stroke": "white"
+        },
+        "encoding": {
+            "color": {
+                "field": "truecases",
+                "type": "quantitative",
+                "scale": {"type": "log"}
+            },
+            "tooltip": [
+                {"field": "properties.name", "type": "nominal", "title": "county"},
+                {"field": "cases", "type": "quantitative"}
+            ]
+        }
+        }

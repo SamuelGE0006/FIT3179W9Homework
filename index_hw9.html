@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <Head>
+        <meta charset="UTF-8">
+
+        <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+        <title>Covid-19 cases in the USA</title>
+        <link rel="stylesheet" type="text/css" href="css/styles_hw9.css" media="all">
+    </Head>
+    <body>
+        <div id="clorapheth_basic"></div>
+        <script type="text/javascript">
+        var spec2 = "js/cloraplethbasic.vega";
+        vegaEmbed('#clorapleth_map', spec2).then(function(result) {
+            // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+        }).catch(colsole.error);
+        </script>
+    </body>
+</html>
